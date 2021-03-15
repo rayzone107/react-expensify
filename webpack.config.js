@@ -15,7 +15,10 @@ module.exports = (env) => {
     const isProduction = env.production;
     return {
         mode: 'development',
-        entry: './src/app.js',
+        entry: [
+            'babel-polyfill',
+            './src/app.js'
+        ],
         // entry: './src/playground/hoc.js',
         output: {
             path: path.join(__dirname, "public", "dist"),
@@ -33,7 +36,8 @@ module.exports = (env) => {
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true
+                            sourceMap: true,
+                            url: false
                         }
                     },
                     {
